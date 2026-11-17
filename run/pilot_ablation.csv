@@ -1,0 +1,11 @@
+rho,beta,q,P,lc_dist,alloc_lc,alloc_be,cpu_limit,be_yield,lc_source,gogc,rep
+0.7,0.5,20ms,2,exp:50us,0,0,,,net,,0
+0.7,0.5,20ms,2,exp:50us,0,0,,,net,,1
+0.7,0.5,20ms,2,exp:50us,0,0,,1ms,net,,0
+0.7,0.5,20ms,2,exp:50us,0,0,,1ms,net,,1
+0.7,0.5,20ms,2,exp:50us,0,0,,,inproc,,0
+0.7,0.5,20ms,2,exp:50us,0,0,,,inproc,,1
+0.7,0.5,20ms,2,exp:50us,4096,65536,,,net,,0
+0.7,0.5,20ms,2,exp:50us,4096,65536,,,net,,1
+0.7,0.5,20ms,2,exp:50us,4096,65536,,,net,off,0
+0.7,0.5,20ms,2,exp:50us,4096,65536,,,net,off,1

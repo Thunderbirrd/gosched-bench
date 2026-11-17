@@ -1,0 +1,13 @@
+# сборка и окружение
+bin/
+.toolchain/
+.idea/
+__pycache__/
+*.out
+
+# результаты измерений и журналы (хранятся отдельно от кода)
+results/
+results-*/
+results-*.tar.gz
+plan*.csv
+*.log

@@ -1,0 +1,41 @@
+# Два контейнера: тестируемый сервис и генератор нагрузки.
+#
+#   docker compose build
+#   docker compose up --abort-on-container-exit     # быстрая проверка, ~15 с
+#
+# Это smoke-прогон с фиксированными параметрами. Серию экспериментов
+# запускает run/run.py --docker: он использует тот же образ и ту же сеть,
+# но поднимает контейнеры заново на каждый прогон со своими параметрами.
+#
+# cpuset разводит сервер и генератор по разным vCPU виртуальной машины Docker.
+# Номера должны существовать: в Docker Desktop задайте число CPU в
+# Settings → Resources (для схемы ниже нужно не меньше 4).
+
+name: gosched-bench
+
+services:
+  server:
+    build: .
+    image: gosched-bench:local
+    command: ["/bin/server", "-addr", ":7070", "-out", "/results/compose/server",
+              "-be-util", "0.4", "-be-q", "20ms"]
+    environment:
+      GOMAXPROCS: "2"
+    cpuset: "0-1"
+    volumes:
+      - ./results:/results
+
+  loadgen:
+    image: gosched-bench:local
+    depends_on: [server]
+    command: ["/bin/loadgen", "-addr", "server:7070", "-rate", "2000",
+              "-warmup", "2s", "-dur", "10s", "-out", "/results/compose/loadgen"]
+    environment:
+      GOMAXPROCS: "2"
+    cpuset: "2-3"
+    volumes:
+      - ./results:/results
+
+networks:
+  default:
+    name: gsb
