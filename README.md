@@ -18,12 +18,14 @@ internal/       proto (кадры), spin (CPU-работа), dist (распре�
 sim/mgk.py      имитация эталонов M/G/k: fcfs, rr (квант 10 мс), prio (вытесняющий приоритет LC)
 run/            make_plan.py (планы обеих статей), run.py (прогон плана), overhead.py
                 (поправка ρ на накладные), env_check.sh, smoke.sh
-analysis/       collect.py: results.csv (прогоны) и points.csv (точки, CI, эталоны, D, slowdown)
+analysis/       collect.py: results.csv (прогоны) и points.csv (точки, CI, эталоны, D, slowdown);
+                article2*.py, h1trace.py: расчёты для статьи 2 и разбор трасс; figures.py: рисунки
 deploy/         setup.sh (подготовка машины), run_all.sh (все серии подряд),
                 push.sh / pull.sh (с ноутбука: залить код, забрать результаты)
 ```
 
-Внешних зависимостей нет: только стандартные библиотеки Go и Python 3.
+Внешних зависимостей у стенда нет: только стандартные библиотеки Go и Python 3.
+Для построения рисунков (`analysis/figures.py`) нужен matplotlib.
 
 ## Требования
 

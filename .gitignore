@@ -10,4 +10,5 @@ results/
 results-*/
 results-*.tar.gz
 plan*.csv
+figures/
 *.log
