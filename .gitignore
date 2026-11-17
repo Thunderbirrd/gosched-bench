@@ -12,3 +12,6 @@ results-*.tar.gz
 plan*.csv
 figures/
 *.log
+
+# рабочее описание стенда (не публикуется)
+README.md
